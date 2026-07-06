@@ -79,10 +79,8 @@
       <label><b>SPH</b></label><br>
       <input type="number" id="sph" step="0.25" value="0.00" class="rx-input"><br>
       <div>
-        <button onclick="adj('sph',-0.25)" class="btn-minus">−0.25</button>
-        <button onclick="adj('sph', 0.25)" class="btn-plus">+0.25</button><br>
-        <button onclick="adj('sph',-1.00)" class="btn-minus">−1.00</button>
-        <button onclick="adj('sph', 1.00)" class="btn-plus">+1.00</button>
+        <button onclick="adj('sph',-0.5)" class="btn-minus">−0.50</button>
+        <button onclick="adj('sph', 0.5)" class="btn-plus">+0.50</button><br>
       </div>
     </div>
 
@@ -91,22 +89,18 @@
       <label><b>CYL</b></label><br>
       <input type="number" id="cyl" step="0.25" value="0.00" class="rx-input"><br>
       <div>
-        <button onclick="adj('cyl',-0.25)" class="btn-minus">−0.25</button>
-        <button onclick="adj('cyl', 0.25)" class="btn-plus">+0.25</button><br>
-        <button onclick="adj('cyl',-1.00)" class="btn-minus">−1.00</button>
-        <button onclick="adj('cyl', 1.00)" class="btn-plus">+1.00</button>
+        <button onclick="adj('cyl',-0.5)" class="btn-minus">−0.50</button>
+        <button onclick="adj('cyl', 0.5)" class="btn-plus">+0.50</button><br>
       </div>
     </div>
 
     <!-- AXIS -->
     <div style="text-align:center;">
       <label><b>AXIS</b></label><br>
-      <input type="number" id="axis" step="1" value="180" class="rx-input"><br>
+      <input type="text" id="axis" step="1" min="0" value="180" class="rx-input"><br>
       <div>
-        <button onclick="adj('axis', -5)"  class="btn-minus">−5</button>
-        <button onclick="adj('axis',  5)"  class="btn-plus">+5</button><br>
-        <button onclick="adj('axis',-20)"  class="btn-minus">−20</button>
-        <button onclick="adj('axis', 20)"  class="btn-plus">+20</button>
+        <button onclick="adj('axis', -15)"  class="btn-minus">−15</button>
+        <button onclick="adj('axis',  15)"  class="btn-plus">+15</button><br>
       </div>
     </div>
   </div>
@@ -199,10 +193,7 @@
 </div> 
 </div>
 <div>
-<img
-  src="https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/FC_DC_GUIDE.png"
-  style="
-    max-width:95%;"
+
 </div>
 
 
@@ -289,7 +280,7 @@ const tCyl = document.getElementById('tCyl');
 const tAxis= document.getElementById('tAxis');
 
 let letterSize = 2;
-let TARGET = { S: -1.00, C: -1.00, A: 180 };
+let TARGET = { S: -0.00, C: -0.00, A: 180 };
 let TRUE   = { sph: 0, cyl: 0, axis: 180, se: 0 };
 let IS_PLUS_CYL = false;
 let COACH_STAGE = 1;      // 1=DUOCHROME, 2=AXIS, 3=CYL
