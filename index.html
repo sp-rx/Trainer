@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <title>Fanchart & Duochrome Trainer</title>
 <style>
-  body { font-family: system-ui, sans-serif; background:#fff; text-align:center; margin:20px; }
+  body { font-family: system-ui, sans-serif; background:#f2f2f2; text-align:center; margin:20px; }
   #currentRx { font-weight:600; font-size:16px; margin-bottom:10px; }
 
-  .card{ background:#fff; border-radius:10px; padding:20px 10px;
+  .card{ background:#g1g1g1; border-radius:10px; padding:20px 10px;
     box-shadow:0 0 10px rgba(0,0,0,.25); display:inline-block; border:1px solid #bbb; margin:8px 0 14px; }
   .row input[type=number]{ width:70px; text-align:center; }
   .row b{ display:inline-block; margin-bottom:6px; }
@@ -43,82 +43,44 @@
 </head>
 <body>
 
-<div style="height:10px;"></div>
+<div style="height:30px;"></div>
 <div id="currentRx">FANCHART & DUOCHROME TRAINER</div>
-<div><span>Train over refraction here: 
-<a href="https://kiaraoptometrypx.github.io/trainer_light/" target="_blank" rel="noopener">trainer_light</a>
-</span></div>
+
 <div style="height:10px"></div>
 
 
-<!-- Controls -->
-<div id="controls" class="card" style="font-size:15px; width:550px">
-  Your challenge is to find the RX that makes everything clear again!
 
 
-<div style="height:20px"></div>
+<div class="card" style="width:750px">
+<div class="row btn-group">
+<button id="toggleBtn">Try Test</button>
+
+</div>
+
+<div class="row" id="targetPanel" style="
+  display:none;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  width:550px;
+  margin:0 auto;
+">
+
+<div class="btn-group">
+  SPH <input style="width:70px" type="number" id="tSph" step="0.25" value="-1.00">
+  CYL<input style="width:70px" type="number" id="tCyl" step="0.25" value="-1.00">
+  AXIS <input style="width:70px" type="number" id="tAxis" step="5"   value="180">
+<button onclick="resetTarget()">Reset</button>
+</div>
 
 
-<!-- Answer -->
-<div id="targetPanel" style="border:none; display:none; justify-content:center; width:550px;">
-
-  <b>SPH</b> <input style="width:100px" type="number" id="tSph" step="0.25" value="-1.00">
-  <b>CYL</b> <input style="width:100px" type="number" id="tCyl" step="0.25" value="-1.00">
-  <b>AXIS</b> <input style="width:100px" type="number" id="tAxis" step="5"   value="180">
 <div style="height:10px"></div>
 
 </div>
-<div style="height:10px;"></div>
 
 
-
-  <div style="display:flex; justify-content:center; gap:50px; flex-wrap:wrap; align-items:flex-start;">
-
-    <!-- SPH -->
-    <div style="text-align:center;">
-      <label><b>SPH</b></label><br>
-      <input type="number" id="sph" step="0.25" value="0.00" class="rx-input"><br>
-      <div>
-        <button onclick="adj('sph',-0.5)" class="btn-minus">−0.50</button>
-        <button onclick="adj('sph', 0.5)" class="btn-plus">+0.50</button><br>
-      </div>
-    </div>
-
-    <!-- CYL -->
-    <div style="text-align:center;">
-      <label><b>CYL</b></label><br>
-      <input type="number" id="cyl" step="0.25" value="0.00" class="rx-input"><br>
-      <div>
-        <button onclick="adj('cyl',-0.5)" class="btn-minus">−0.50</button>
-        <button onclick="adj('cyl', 0.5)" class="btn-plus">+0.50</button><br>
-      </div>
-    </div>
-
-    <!-- AXIS -->
-    <div style="text-align:center;">
-      <label><b>AXIS</b></label><br>
-      <input type="text" id="axis" step="1" min="0" value="180" class="rx-input"><br>
-      <div>
-        <button onclick="adj('axis', -15)"  class="btn-minus">−15</button>
-        <button onclick="adj('axis',  15)"  class="btn-plus">+15</button><br>
-      </div>
-    </div>
-  </div>
-
-  <div style="height:10px"></div>
-  <div class="row btn-group">
-    <button style="width:500px" id="resetBtn">Reset Rx to 0</button>
-  </div>
-  <div class="row btn-group">
-    <button style="background:pink; border:1px solid black; width:245px;" id="formToggleBtn">Convert Cyl</button>
-    <button style="background:pink; border:1px solid black; width:245px;" id="targetToggleBtn">Show Answer</button>
-  </div>
-</div>
-
-  
-
-
-
+<div id="test" style="display:none">
 <div class="row btn-group" style="
   display:flex;
   flex-direction:row;   /* side by side */
@@ -126,8 +88,10 @@
   align-items:center;
   gap:10px;             /* space between buttons */
 ">
-  <button style="background:#fffdf0; border:1px solid grey; width:275px;" id="randBtn">New Test</button>
-  <button style="background:#fffdf0; border:1px solid grey; width:275px;" id="coachStatusBtn">Show Status</button>
+  <button style="background:#fffdf0; border:1px solid grey; width:100px;" id="randBtn">New Test</button>
+    <button style="background:pink; border:1px solid black; width:100px;" id="targetToggleBtn">Show Answer</button>
+
+  <button style="background:#fffdf0; border:1px solid grey; width:100px;" id="coachStatusBtn">Show Status</button>
 </div>
 
 <!-- Smart Coach -->
@@ -139,6 +103,8 @@
 
 </div>
 
+</div>
+</div>
 
 
 
@@ -146,17 +112,54 @@
 
 
 
+<!-- Controls -->
+<div id="controls" class="card" style="font-size:15px; width:750px">
+  <div style="display:flex; justify-content:center; gap:50px; flex-wrap:wrap; align-items:flex-start;">
+
+    <!-- SPH -->
+    <div style="text-align:center;">
+      <label>SPH</label><br>
+      <input type="number" id="sph" step="0.25" value="0.00" class="rx-input"><br>
+      <div>
+        <button onclick="adj('sph',-0.5)" class="btn-minus">−0.50</button>
+        <button onclick="adj('sph', 0.5)" class="btn-plus">+0.50</button><br>
+      </div>
+    </div>
+
+    <!-- CYL -->
+    <div style="text-align:center;">
+      <label>CYL</label><br>
+      <input type="number" id="cyl" step="0.25" value="0.00" class="rx-input"><br>
+      <div>
+        <button onclick="adj('cyl',-0.5)" class="btn-minus">−0.50</button>
+        <button onclick="adj('cyl', +0.5)" class="btn-plus">+0.50</button><br>
+      </div>
+    </div>
+
+    <!-- AXIS -->
+    <div style="text-align:center;">
+      <label>AXIS</label><br>
+      <input type="number" id="axis" step="15" min="0" value="180" class="rx-input"><br>
+      <div>
+        <button onclick="adj('axis', -15)"  class="btn-minus">−15</button>
+        <button onclick="adj('axis', +15)"  class="btn-plus">+15</button><br>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:10px"></div>
+  <div class="row btn-group">
+    <button style="width:200px" id="resetBtn">Reset Rx to 0</button>
+    <button style="border:1px solid black; width:200px;" id="formToggleBtn">Convert Cyl</button>
+  </div>
 
 
-
-
-
-
+</div>
 
 
 
 <div style="height:10px"></div>
-
+<div class="card" style="background-color:#d5d5d5">
 
 <!-- Stage -->
 <div id="stage">
@@ -195,6 +198,7 @@
 <div>
 
 </div>
+</div>
 
 
 
@@ -206,20 +210,22 @@
 
 
 <script>
-/* =========================
-   Quick adjust buttons
-========================= */
 function adj(type, step){
   const el = document.getElementById(type);
-  let v = parseFloat(el.value)||0;
-  v += step;
-  if(type==='axis'){
-    if(v < 1) v = 180;
-    if(v > 180) v = 1;
-    el.value = Math.round(v);
+  let v = parseFloat(el.value) || 0;
+
+  if(type === 'axis'){
+    v += step;
+
+    if(v > 180) v -= 180;
+    if(v < 1) v += 180;
+
+    el.value = v;
   } else {
+    v += step;
     el.value = v.toFixed(2);
   }
+
   el.dispatchEvent(new Event('input'));
 }
 </script>
@@ -244,7 +250,7 @@ const NEWTEST = {
   sphMax:  4.00,
   cylMin: -4.00,  // ≤ 0 (minus cyl)
   cylMax:  0.00,
-  axisStep: 1     // 1..180 (e.g., 5 → 1,6,11,...,176)
+  axisStep: 0     // 1..180 (e.g., 5 → 1,6,11,...,176)
 };
 
 // Optional helper to tweak from console/code:
@@ -279,7 +285,7 @@ const tSph = document.getElementById('tSph');
 const tCyl = document.getElementById('tCyl');
 const tAxis= document.getElementById('tAxis');
 
-let letterSize = 2;
+let letterSize = 1;
 let TARGET = { S: -0.00, C: -0.00, A: 180 };
 let TRUE   = { sph: 0, cyl: 0, axis: 180, se: 0 };
 let IS_PLUS_CYL = false;
@@ -318,8 +324,10 @@ function wrapAxis(val){
   if (!Number.isFinite(n)) return 0;
   const raw = String(val).trim();
   let v = ((Math.round(n) % 180) + 180) % 180;
-  return raw === "180" ? 180 : (v === 0 ? 1 : v);
+  return (raw === "180" || v === 0) ? 180 : v;
 }
+
+
 function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
 
 /* Minus-cyl normalize + target clamp */
@@ -877,6 +885,42 @@ function applyStatusVeil(){
   hints.forEach(h => h.classList.toggle('revealed', STATUS_REVEALED));
 }
 </script>
+
+
+<script>
+const btn = document.getElementById('toggleBtn');
+const div = document.getElementById('test');
+
+btn.addEventListener('click', () => {
+  if (div.style.display === 'none') {
+    div.style.display = 'block';
+  } else {
+    div.style.display = 'none';
+  }
+});
+</script>
+
+
+<script>
+function resetTarget() {
+  tSph.value = "0.00";
+  tCyl.value = "0.00";
+  tAxis.value = "0";
+
+  TARGET.S = 0;
+  TARGET.C = 0;
+  TARGET.A = 0;
+
+  recomputeOver();
+  updateCoach();
+}
+</script>
+
+
+
+
+
+
 
 
 
