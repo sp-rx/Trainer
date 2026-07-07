@@ -4,6 +4,22 @@
 <meta charset="UTF-8" />
 <title>Fanchart & Duochrome Trainer</title>
 <style>
+
+@media (max-width: 480px) {
+  body {
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 20px; /* optional */
+  }
+
+  #app {
+    transform: scale(0.5);
+    transform-origin: top center;
+  }
+}
+
+
+
   body { font-family: system-ui, sans-serif; background:#f2f2f2; text-align:center; margin:20px; }
   #currentRx { font-weight:600; font-size:16px; margin-bottom:10px; }
 
@@ -41,8 +57,11 @@
   #targetPanel input{ width:60px; font-size:12px; padding:5px; text-align:center; margin:2px 2px; border-radius:5px; }
 </style>
 </head>
-<body>
 
+
+
+<body>
+<div id="app">
 <div style="height:30px;"></div>
 <div id="currentRx">FANCHART & DUOCHROME TRAINER</div>
 
@@ -934,5 +953,7 @@ function resetTarget() {
 
 
 <div style="height:300px"></div>
+</div>
+
 </body>
 </html>
