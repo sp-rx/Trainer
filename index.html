@@ -285,7 +285,7 @@
     <button style="width:100px; font-size:11px; border-radius:10px;" onclick="nextImage2()">Next ▶</button>
   </div>
 
-  <div id="thumbs" class="thumbs"></div>
+  <div id="thumbs2" class="thumbs"></div>
 </div>
 </div>
 
@@ -390,7 +390,7 @@ function prevImage2(){
 // Create thumbnails
 images2.forEach((n,i)=>{
     const t = document.createElement("img");
-    t.src = BASE2 + n + ".jpg";
+    t.src = BASE2 + n + ".png";
     t.onclick = () => showImage2(i);
     thumbs2.appendChild(t);
 });
@@ -398,7 +398,7 @@ images2.forEach((n,i)=>{
 // Preload all full-size images
 images2.forEach(n => {
     const preload = new Image();
-    preload.src = BASE2 + n + ".jpg";
+    preload.src = BASE2 + n + ".png";
 });
 
 showImage2(0);
