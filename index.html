@@ -223,12 +223,12 @@
 <div id="stage">
   <!-- Fan Chart (LEFT) -->
   <div id="stack" style="position:relative; width:370px; margin:0 0 20px 0;">
-    <img class="bg" src="https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/FC_DIRECTIONS.png" alt="" style="width:100%; display:block;" />
+    <img class="bg" src="https://sp-rx.github.io/Trainer/FC_DIRECTIONS.png" alt="" style="width:100%; display:block;" />
     <div class="overlay" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none;">
       <div class="overlay-stage">
         <div class="outer-circle" id="outerCircle" style="width:100%; aspect-ratio:1/1; border-radius:9999px; overflow:hidden;">
           <div class="circular-img" style="width:100%; height:100%;">
-            <img id="fanChart" src="https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/C025.png" alt="" style="width:100%; height:100%; object-fit:cover;" />
+            <img id="fanChart" src="https://sp-rx.github.io/Trainer/C025.png" alt="" style="width:100%; height:100%; object-fit:cover;" />
           </div>
         </div>
       </div>
@@ -239,11 +239,11 @@
 <div class="duo-wrap">
   <div class="duochrome">
     <div class="duo-side" id="redSide">
-      <img class="base" id="redImg"  src="https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/RED_2.png"  alt="">
+      <img class="base" id="redImg"  src="https://sp-rx.github.io/Trainer/RED_2.png"  alt="">
       <img class="overlay" id="redOv"  alt="">
     </div>
     <div class="duo-side" id="blueSide">
-      <img class="base" id="blueImg" src="https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/BLUE_2.png" alt="">
+      <img class="base" id="blueImg" src="https://sp-rx.github.io/Trainer/BLUE_2.png" alt="">
       <img class="overlay" id="blueOv" alt="">
     </div>
   </div>
@@ -261,7 +261,7 @@
 <div class="card" style="background-color:white">
 <div class="gallery">
 <img id="galleryImage"
-     src="https://raw.githubusercontent.com/sp-rx/Delta_RX/refs/heads/main/Delta_RX/1.jpg"
+     src="https://sp-rx.github.io/Delta_RX/Delta_RX/1.jpg"
      alt="Gallery Image">
 
   <div class="gallery-controls">
@@ -277,7 +277,7 @@
 <div class="card" style="background-color:#ebebeb">
 <div class="gallery">
 <img id="galleryImage2"
-     src="https://raw.githubusercontent.com/sp-rx/Trainer/refs/heads/main/fc1.png"
+     src="https://sp-rx.github.io/Trainer/fc1.png"
      alt="Gallery Image">
 
   <div class="gallery-controls">
@@ -292,7 +292,7 @@
 
 
 <script>
-const BASE = "https://raw.githubusercontent.com/sp-rx/Delta_RX/refs/heads/main/Delta_RX/";
+const BASE = "https://sp-rx.github.io/Delta_RX/Delta_RX/";
 
 // Image numbers
 const images = [
@@ -351,7 +351,7 @@ showImage(0);
 
 
 <script>
-const BASE2 = "https://raw.githubusercontent.com/sp-rx/Trainer/refs/heads/main/fc";
+const BASE2 = "https://sp-rx.github.io/Trainer/fc";
 
 // Image numbers
 const images2 = [
@@ -494,7 +494,7 @@ const SIZES = [1,2,3], cache = {};
 (function preloadAll(){
   SIZES.forEach(sz=>{
     ["RED","BLUE"].forEach(col=>{
-      const url = `https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/${col}_${sz}.png`;
+      const url = `https://sp-rx.github.io/Trainer/${col}_${sz}.png`;
       const im = new Image(); im.decoding = "async"; im.src = url;
       cache[`${col}_${sz}`] = im;
     });
@@ -625,7 +625,7 @@ const imgName =
   absC <= 1.00  ? "C100.png" :
                   "C150.png";
 
-fanImg.src = `https://raw.githubusercontent.com/kiaraoptometrypx/Trainer/main/${imgName}`;
+fanImg.src = `https://sp-rx.github.io/Trainer/${imgName}`;
 fanImg.style.filter = `blur(${fcBlur}px)`;
 
   const axisFC = (axis + 90) % 180;
